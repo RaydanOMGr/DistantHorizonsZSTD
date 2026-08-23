@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "distanthorizonszstd",
+  "version": "${version}",
+  "name": "distanthorizonszstd",
+  "description": "",
+  "authors": ["AndreasMelone"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/distanthorizonszstd/icon.png",
+  "environment": "client",
+  "entrypoints": {
+  },
+  "mixins": [
+    "distanthorizonszstd.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}"
+  }
+}
