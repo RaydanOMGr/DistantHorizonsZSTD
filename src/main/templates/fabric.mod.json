@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "name": "${mod_name}",
+  "version": "${mod_version}",
+  "description": "${mod_description}",
+  "environment": "client",
+  "authors": ["${mod_author}"],
+  "contact": {
+    "issues": "${mod_issue_tracker}",
+    "sources": "${mod_repo}"
+  },
+  "icon": "assets/${mod_id}/icon.png",
+  "entrypoints": {
+  },
+  "depends": {
+    "fabricloader": ">=0.16",
+    "java": ">=17"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.com/invite/3vfnvBFRKv"
+      }
+    }
+  }
+}

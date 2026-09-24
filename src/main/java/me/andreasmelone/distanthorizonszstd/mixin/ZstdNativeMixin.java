@@ -1,6 +1,5 @@
 package me.andreasmelone.distanthorizonszstd.mixin;
 
-import com.mojang.logging.LogUtils;
 import dhcomgithubluben.zstd.util.Native;
 import me.andreasmelone.distanthorizonszstd.AndroidLibLoader;
 import org.spongepowered.asm.mixin.Final;
@@ -12,27 +11,28 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Mixin(Native.class)
 public class ZstdNativeMixin {
-    @Shadow
+    @Shadow(remap = false)
     private static AtomicBoolean loaded;
 
-    @Shadow
+    @Shadow(remap = false)
     private static void loadLibraryFile(String string) {
         throw new UnsupportedOperationException("Implemented via mixin");
     }
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private static String libnameShort;
 
     @Inject(
             method = "load(Ljava/io/File;)V",
             at = @At("HEAD"),
-            cancellable = true
+            cancellable = true,
+            remap = false
     )
     private static void injectLoad(File file, CallbackInfo ci) {
         if(!loaded.get() && AndroidLibLoader.INSTANCE.init()) {
@@ -41,7 +41,7 @@ public class ZstdNativeMixin {
                 loaded.set(true);
                 ci.cancel();
             } catch (Exception e) {
-                LogUtils.getLogger().error("Failed to load android zstd", e);
+                Logger.getLogger("ZstdNativeMixin").log(Level.WARNING, "Failed to load android zstd", e);
                 return;
             }
         }

@@ -1,0 +1,17 @@
+[
+  {
+    "modid": "${mod_id}",
+    "name": "${mod_name}",
+    "description": "${mod_description}",
+    "version": "${mod_version}",
+    "acceptedMinecraftVersions": "[0,)",
+    "useMetadata": true,
+    "url": "${mod_repo}",
+    "updateUrl": "",
+    "authorList": ["${mod_author}"],
+    "credits": "",
+    "logoFile": "assets/${mod_id}/icon.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
